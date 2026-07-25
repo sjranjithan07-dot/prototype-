@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "AI HR Interview Coach API",
+    "description": "API collection for testing the FastAPI backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Chat (Send Audio to AI)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "audio",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "history",
+              "value": "[{\"role\": \"assistant\", \"content\": \"Welcome! Please introduce yourself.\"}]",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/interview/chat",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "interview",
+            "chat"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Analyze (Generate Final Report)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"history\": [\n    {\"role\": \"assistant\", \"content\": \"Welcome! Please introduce yourself.\"},\n    {\"role\": \"user\", \"content\": \"I am a senior frontend engineer with 5 years of experience.\"}\n  ],\n  \"look_away_count\": 2,\n  \"filler_words_count\": 4\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/interview/analyze",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "interview",
+            "analyze"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
